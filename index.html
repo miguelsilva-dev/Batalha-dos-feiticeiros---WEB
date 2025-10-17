@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha dos Feiticeiros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="tela-inicial">
+        <h1>Batalha dos Feiticeiros</h1>
+        <p>Digite seu nome, nobre feiticeiro:</p>
+        <input type="text" id="entry-nome" class="input-nome" placeholder="Mago Misterioso" autofocus>
+        
+        <div class="frame-ajuda">
+            <h2>📜 Como Jogar 📜</h2>
+            <ul>
+                <li>• O objetivo é derrotar os inimigos em batalhas de turno.</li>
+                <li>• Use os feitiços para atacar. Feitiços mais fortes têm menor chance de acerto.</li>
+                <li>• Use as poções para recuperar vida (❤️) ou mana (💧).</li>
+                <li>• A cada 3 vitórias, um chefe (Boss) poderoso aparecerá.</li>
+            </ul>
+        </div>
+
+        <button id="btn-iniciar" class="btn-iniciar">⚔️ Iniciar Aventura ⚔️</button>
+    </div>
+
+    <div id="tela-jogo" class="game-container">
+        <div class="status-container">
+            <div id="frame-jogador" class="status-box">
+                <h2 id="nome-jogador-label"></h2>
+                <div>
+                    <label>❤️ Vida</label>
+                    <div class="barra-container">
+                        <div id="barra-vida-jogador" class="barra-vida"></div>
+                    </div>
+                </div>
+                <div>
+                    <label>💧 Mana</label>
+                    <div class="barra-container">
+                        <div id="barra-mana-jogador" class="barra-mana"></div>
+                    </div>
+                </div>
+                <div id="status-jogador" class="status-effects"></div>
+            </div>
+
+            <div id="frame-inimigo" class="status-box">
+                <h2 id="nome-inimigo-label"></h2>
+                 <div>
+                    <label>❤️ Vida</label>
+                    <div class="barra-container">
+                        <div id="barra-vida-inimigo" class="barra-vida"></div>
+                    </div>
+                </div>
+                 <div id="status-inimigo" class="status-effects"></div>
+            </div>
+        </div>
+
+        <div id="arena">
+            <div id="sprite-jogador" class="personagem"></div>
+            <div id="sprite-inimigo" class="personagem"></div>
+        </div>
+
+        <div class="acoes-log-container">
+            <div id="log-container">
+                <h3>📜 Crônicas da Batalha 📜</h3>
+                <div id="log-batalha"></div>
+            </div>
+            <div id="acoes-container">
+                <div class="acoes-grupo">
+                    <h3>✨ Arsenal Mágico ✨</h3>
+                    <div id="feiticos-grid"></div>
+                </div>
+                <div class="acoes-grupo">
+                    <h3>🎒 Bolsa de Itens 🎒</h3>
+                    <div id="itens-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
