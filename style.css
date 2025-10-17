@@ -1,0 +1,332 @@
+/* --- ESTILOS GERAIS E LAYOUT --- */
+:root {
+    --cor-fundo: #0a0a1a;
+    --cor-frame: #16213e;
+    --cor-texto: #ffffff;
+    --cor-destaque: #ffd700;
+    --cor-vida: #2ecc71;
+    --cor-vida-baixa: #e74c3c;
+    --cor-mana: #3498db;
+    --cor-escudo: #8e44ad;
+    --cor-erro: #e74c3c;
+    --cor-vitoria: #2ecc71;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    gap: 1vw;
+}
+
+/* --- TELA INICIAL --- */
+#tela-inicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+#tela-inicial h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--cor-destaque);
+    text-shadow: 0 0 10px var(--cor-destaque);
+}
+
+#tela-inicial p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.input-nome {
+    font-size: 1.2rem;
+    padding: 10px;
+    text-align: center;
+    background-color: #333;
+    color: var(--cor-texto);
+    border: 2px solid var(--cor-destaque);
+    border-radius: 8px;
+    width: clamp(250px, 50vw, 400px);
+}
+
+.frame-ajuda {
+    background-color: var(--cor-frame);
+    border: 1px solid var(--cor-mana);
+    border-radius: 8px;
+    padding: 15px;
+    max-width: 600px;
+}
+
+.frame-ajuda h2 {
+    color: var(--cor-destaque);
+    margin-bottom: 10px;
+}
+
+.frame-ajuda ul {
+    list-style: none;
+    text-align: left;
+}
+
+.frame-ajuda li {
+    margin-bottom: 8px;
+}
+
+.btn-iniciar {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 12px 25px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-iniciar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #667eea;
+}
+
+/* --- TELA DO JOGO --- */
+#tela-jogo {
+    display: none; /* Inicia escondida */
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+/* STATUS */
+.status-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+    height: 20%;
+}
+
+.status-box {
+    background-color: var(--cor-frame);
+    border-radius: 8px;
+    padding: 1vw;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.status-box h2 {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+#frame-jogador h2 { color: #4facfe; }
+#frame-inimigo h2 { color: #fc466b; }
+
+.barra-container {
+    width: 100%;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    height: clamp(15px, 2vw, 25px);
+    border: 1px solid #555;
+}
+
+.barra-vida, .barra-mana {
+    height: 100%;
+    width: 100%;
+    transition: width 0.5s ease-in-out;
+    text-align: right;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(0.7rem, 1.2vw, 1rem);
+    padding-right: 5px;
+}
+.barra-vida { background-color: var(--cor-vida); }
+.barra-vida.baixa { background-color: var(--cor-vida-baixa); }
+.barra-mana { background-color: var(--cor-mana); }
+
+.status-effects {
+    font-size: clamp(0.8rem, 1vw, 1.1rem);
+    min-height: 1.2em;
+}
+
+/* ARENA */
+#arena {
+    height: 45%;
+    background-color: rgba(15, 15, 35, 0.8);
+    border: 2px solid var(--cor-destaque);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.personagem {
+    position: absolute;
+    bottom: 10%;
+    transform: translateX(-50%);
+    transition: transform 0.2s;
+    font-size: clamp(60px, 8vw, 100px); /* Ajustado para emojis */
+    text-shadow: 0 0 10px rgba(0,0,0,0.7); /* Adiciona profundidade */
+}
+.personagem.boss {
+    font-size: clamp(90px, 12vw, 150px); /* Bosses maiores */
+}
+#sprite-jogador { left: 25%; }
+#sprite-inimigo { left: 75%; }
+
+/* AÇÕES E LOG */
+.acoes-log-container {
+    display: flex;
+    gap: 1vw;
+    height: 35%;
+}
+
+/* LOG */
+#log-container {
+    width: 40%;
+    background-color: var(--cor-frame);
+    border-radius: 8px;
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+}
+#log-batalha {
+    flex-grow: 1;
+    background-color: #0f0f23;
+    color: white;
+    font-family: 'Consolas', monospace;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    padding: 10px;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+#log-batalha p { margin-bottom: 5px; }
+.log-vitoria { color: var(--cor-vitoria); font-weight: bold; }
+.log-erro { color: var(--cor-erro); font-weight: bold; }
+.log-ouro { color: #f1c40f; font-weight: bold; }
+.log-nivel { color: var(--cor-mana); font-weight: bold; }
+.log-boss { color: #9b59b6; font-weight: bold; }
+.log-turno { color: #1abc9c; font-weight: bold; }
+.log-cura { color: #27ae60; font-weight: bold; }
+.log-veneno { color: #27ae60; font-weight: bold; }
+.log-escudo { color: var(--cor-mana); font-weight: bold; }
+
+/* AÇÕES */
+#acoes-container {
+    width: 60%;
+    background-color: var(--cor-frame);
+    border-radius: 8px;
+    padding: 1vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.acoes-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 48%;
+}
+
+.acoes-grupo h3 {
+    text-align: center;
+}
+
+#feiticos-grid, #itens-grid {
+    display: grid;
+    gap: 8px;
+}
+#feiticos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+#itens-grid {
+    grid-template-columns: 1fr;
+}
+
+.btn-acao {
+    padding: 10px 5px;
+    font-size: clamp(0.8rem, 1.1vw, 1.1rem);
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid #555;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-acao:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+.btn-acao:disabled {
+    cursor: not-allowed;
+    background-color: #555 !important;
+    color: #999;
+    border-color: #333;
+}
+
+.btn-feitico { background-color: #444; color: white; }
+.btn-pocao-vida { background-color: #27ae60; color: white; }
+.btn-pocao-mana { background-color: #2980b9; color: white; }
+
+/* ANIMAÇÕES */
+.projetil, .meteoro, .impacto {
+    position: absolute;
+    z-index: 10;
+    font-size: 40px; /* Tamanho dos efeitos */
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.meteoro {
+    top: -50px;
+    animation: cair-meteoro 0.5s linear forwards;
+}
+
+.impacto {
+    z-index: 11;
+    transform: translate(-50%, -50%);
+    animation: sumir-impacto 0.3s forwards;
+    font-size: 70px;
+}
+
+.personagem.hit {
+    animation: tremer 0.3s;
+}
+
+@keyframes tremer {
+    0%, 100% { transform: translateX(-50%); }
+    25% { transform: translateX(-55%); }
+    50% { transform: translateX(-45%); }
+    75% { transform: translateX(-52%); }
+}
+
+@keyframes sumir-impacto {
+    from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    to { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+}
+
+@keyframes cair-meteoro {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(var(--target-y)); opacity: 1; }
+}
